@@ -174,60 +174,20 @@ jobs:
       with:
         app-name: ${{ env.WebApiName }}
         package: api-package
-        slot-name: qa
+        slot-name: hml
     
     - name: Deploy WebApp
       uses: Azure/webapps-deploy@v2
       with:
         app-name: ${{ env.WebAppName }}
         package: app-package
-        slot-name: qa
-  
-  deploy_uat:
-    name: deploy to uat
-    runs-on: windows-latest
-    needs:
-      - deploy_dev
-    environment:
-      name: contosouniversity-uat
-    steps:
-    - name: Azure Login
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_SP }}
-    
-    - name: Download WebApp artifact
-      uses: actions/download-artifact@v3
-      with:
-        name: WebApp
-        path: app-package
-    
-    - name: Download WebApi artifact
-      uses: actions/download-artifact@v3
-      with:
-        name: WebApi
-        path: api-package
-    
-    - name: Deploy WebApi
-      uses: Azure/webapps-deploy@v2
-      with:
-        app-name: ${{ env.WebApiName }}
-        package: api-package
-        slot-name: uat
-    
-    - name: Deploy WebApp
-      uses: Azure/webapps-deploy@v2
-      with:
-        app-name: ${{ env.WebAppName }}
-        package: app-package
-        slot-name: uat
+        slot-name: hml
   
   deploy_prd:
     name: deploy to prd
     runs-on: windows-latest
     needs:
       - deploy_hml
-      - deploy_uat
     environment:
       name: contosouniversity-prd
     steps:
