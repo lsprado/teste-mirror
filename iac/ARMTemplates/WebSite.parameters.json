@@ -1,0 +1,49 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "hostingPlanName": {
+      "value": "plan-ContosoUniversity"
+    },
+    "webSiteName": {
+      "value": "ase-ContosoUniversityAPP"
+    },
+    "webApiName": {
+      "value": "ase-ContosoUniversityAPI"
+    },
+    "functionName": {
+      "value": "func-ContosoUniversity"
+    },
+    "storageAccountName": {
+      "value": "stvmcontosouniversity"
+    },
+    "appInsightsName": {
+      "value": "appi-ContosoUniversity"
+    },
+    "skuName": {
+      "value": "S1"
+    },
+    "environments": {
+      "value": [
+        "Dev",
+        "QA"
+      ]
+    },
+    "appConfigurationName": {
+      "value": "config-ContosoUniversity"
+    },
+    "sqlServerName": {
+      "value": "contosouniversityexampleserver"
+    },
+    "sqlServerAdminLogin": {
+      "value": "leandro"
+    },
+    "sqlServerAdminLoginPassword": {
+      "value": "#P@ssw0rd2022#"
+    },
+    "sqlDatabaseName": {
+      "value": "contosouniversity"
+
+    }
+  }
+}

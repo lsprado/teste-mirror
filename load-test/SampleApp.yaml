@@ -1,0 +1,8 @@
+version: v0.1
+testName: ContosoUniversity_ADO
+testPlan: SampleTest.jmx
+description: 'Contoso University - ADO'
+engineInstances: 1
+failureCriteria: 
+    - avg(response_time_ms) > 100
+    - percentage(error) > 20

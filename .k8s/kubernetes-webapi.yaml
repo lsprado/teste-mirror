@@ -1,0 +1,34 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: contosouniversityapi
+spec:
+  selector:
+    app: contosouniversityapi
+    tier: backend
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: contosouniversityapi
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: contosouniversityapi
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - name: contosouniversityapi
+          image: "leadroregistry.azurecr.io/contosouniversity.api:BuildNumber"
+          ports:
+            - name: http
+              containerPort: 9000
+      imagePullSecrets:
+        - name: acr

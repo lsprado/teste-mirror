@@ -1,0 +1,30 @@
+name: ContosoUniversity-DeleteEnvironment
+
+on:
+  workflow_dispatch:
+  
+env:
+  AZ_RG_NAME: RG_ContosoUniversity
+
+jobs:
+  
+  delete_infra:
+    name: delete infra
+    runs-on: ubuntu-latest
+    steps:
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_SP }}
+    
+    - name: Delete Resource Group
+      run: |
+        if [ $(az group exists --name ${{ env.AZ_RG_NAME }}) = true ]; then
+          echo "Deleting Resource group"
+          az group delete --name ${{ env.AZ_RG_NAME }} --yes
+          
+          echo "Purge App Configuration"
+          az appconfig purge --name config-ContosoUniversity --yes
+        else
+            echo "Resource group not exists"
+        fi

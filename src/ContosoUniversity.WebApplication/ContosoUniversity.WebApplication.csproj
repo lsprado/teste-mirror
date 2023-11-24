@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <!-- propriedades -->
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ApplicationInsightsResourceId>/subscriptions/3323e547-1651-47e7-a768-6931436e3314/resourceGroups/RG_ContosoUniversity/providers/microsoft.insights/components/ContosoUniversityExample</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/3323e547-1651-47e7-a768-6931436e3314/resourcegroups/RG_ContosoUniversity/providers/microsoft.insights/components/ContosoUniversityExample</ApplicationInsightsAnnotationResourceId>
+    <UserSecretsId>ded16f26-e5dc-408d-bc44-fb4141d1ddb6</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.15.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Language" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+	
+</Project>

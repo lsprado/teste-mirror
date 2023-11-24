@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "storage1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/contosouniversitystorage",
+      "type": "storage.azure",
+      "connectionId": "ContosoUniversityBlobStorage",
+      "secretStore": null
+    },
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "appInsights1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/microsoft.insights/components/ContosoUniversityExample",
+      "type": "appInsights.azure",
+      "connectionId": "APPINSIGHTS_CONNECTIONSTRING",
+      "secretStore": null
+    },
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/leadro/databases/ContosoUniversity",
+      "type": "mssql.azure",
+      "connectionId": "ContosoUniversityAPIContext",
+      "secretStore": null
+    },
+    "mssql2": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/leadro/databases/ContosoUniversity",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:ContosoUniversityAPIContext",
+      "secretStore": null
+    }
+  }
+}
