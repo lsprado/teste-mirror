@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   
 env:
-  AZ_RG_NAME: RG_ContosoUniversity
+  AZ_RG_NAME: rg-contosouniversity
 
 jobs:
   
@@ -24,7 +24,7 @@ jobs:
           az group delete --name ${{ env.AZ_RG_NAME }} --yes
           
           echo "Purge App Configuration"
-          az appconfig purge --name config-ContosoUniversity --yes
+          az appconfig purge --name config-contosouniversity-leandro --yes
         else
             echo "Resource group not exists"
         fi
