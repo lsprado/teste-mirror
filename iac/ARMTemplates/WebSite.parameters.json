@@ -3,22 +3,22 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "hostingPlanName": {
-      "value": "plan-ContosoUniversity"
+      "value": "plan-contosouniversity"
     },
     "webSiteName": {
-      "value": "ase-contosouniversityapp"
+      "value": "app-contosouniversity-leandro"
     },
     "webApiName": {
-      "value": "ase-contosouniversityapi"
+      "value": "api-contosouniversity-leandro"
     },
     "functionName": {
-      "value": "func-contosouniversity"
+      "value": "func-contosouniversity-leandro"
     },
     "storageAccountName": {
-      "value": "strcontosouniversity"
+      "value": "strcontosouniversityleandro"
     },
     "appInsightsName": {
-      "value": "appi-contosouniversity"
+      "value": "appi-contosouniversity-leandro"
     },
     "skuName": {
       "value": "S1"
@@ -30,10 +30,10 @@
       ]
     },
     "appConfigurationName": {
-      "value": "config-contosouniversity"
+      "value": "config-contosouniversity-leandro"
     },
     "sqlServerName": {
-      "value": "contosouniversityserver"
+      "value": "sql-contosouniversityleandro"
     },
     "sqlServerAdminLogin": {
       "value": "leandro"
