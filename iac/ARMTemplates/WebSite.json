@@ -37,8 +37,8 @@
     },
     "environments": {
       "defaultValue": [
-        "Dev",
-        "QA"
+        "dev",
+        "qa"
       ],
       "type": "array",
       "metadata": {
@@ -180,7 +180,7 @@
         "[resourceId('Microsoft.Web/Sites', parameters('webSiteName'))]"
       ],
       "copy": {
-        "name": "webPortalSlot",
+        "name": "webAppSlot",
         "count": "[length(parameters('environments'))]"
       }
     },
@@ -241,6 +241,23 @@
             }
           ]
         }
+      }
+    },
+    {
+      "apiVersion": "2020-06-01",
+      "type": "Microsoft.Web/sites/slots",
+      "name": "[concat(parameters('webApiName'), '/', parameters('environments')[copyIndex()])]",
+      "location": "[resourceGroup().location]",
+      "comments": "This specifies the web app slots.",
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/Sites', parameters('webApiName'))]"
+      ],
+      "copy": {
+        "name": "webApiSlot",
+        "count": "[length(parameters('environments'))]"
       }
     },
     {
