@@ -38,15 +38,14 @@ jobs:
     - name: Azure ARM Deployment
       uses: Azure/cli@v1
       with:
-        inlineScript: az deployment group create --resource-group ${{ env.AZ_RG_NAME }} --template-file ContosoUniversity.AzureResourceGroup/ARMTemplates/WebSite.json --parameters  ContosoUniversity.AzureResourceGroup/ARMTemplates/WebSite.parameters.json
+        inlineScript: az deployment group create --resource-group ${{ env.AZ_RG_NAME }} --template-file iac/ARMTemplates/WebSite.json --parameters iac/ARMTemplates/WebSite.parameters.json
   
   run_build:
     name: run build
     runs-on: windows-latest
     needs:
       - run_infra
-    steps:
-    
+    steps:    
     - uses: actions/checkout@v3
     
     - uses: microsoft/setup-msbuild@v1
@@ -57,22 +56,22 @@ jobs:
         dotnet-version: '6.0'
 
     - name: Restore
-      run: dotnet restore
+      run: dotnet restore src/ContosoUniversity.sln
     
     - name: Build
-      run: dotnet build --no-restore --configuration ${{ env.BuildConfiguration }}
+      run: dotnet build src/ContosoUniversity.sln --no-restore --configuration ${{ env.BuildConfiguration }}
     
     - name: Build ContosoUniversity.CodedUITest
-      run: msbuild 'ContosoUniversity.CodedUITest/ContosoUniversity.CodedUITest.csproj' /p:configuration='${{ env.BuildConfiguration }}' /p:platform='${{ env.BuildPlatform }}'
+      run: msbuild 'src/ContosoUniversity.CodedUITest/ContosoUniversity.CodedUITest.csproj' /p:configuration='${{ env.BuildConfiguration }}' /p:platform='${{ env.BuildPlatform }}'
     
     - name: Test
-      run: dotnet test ContosoUniversity.Test/ContosoUniversity.Test.csproj --configuration ${{ env.BuildConfiguration }}
+      run: dotnet test src/ContosoUniversity.Test/ContosoUniversity.Test.csproj --configuration ${{ env.BuildConfiguration }}
     
     - name: Publish API
-      run: dotnet publish ContosoUniversity.API/ContosoUniversity.API.csproj --no-restore --no-build --configuration ${{ env.BuildConfiguration }} --output PublishApi
+      run: dotnet publish src/ContosoUniversity.API/ContosoUniversity.API.csproj --no-restore --no-build --configuration ${{ env.BuildConfiguration }} --output PublishApi
     
     - name: Publish APP
-      run: dotnet publish ContosoUniversity.WebApplication/ContosoUniversity.WebApplication.csproj --no-restore --no-build --configuration ${{ env.BuildConfiguration }} --output PublishApp
+      run: dotnet publish src/ContosoUniversity.WebApplication/ContosoUniversity.WebApplication.csproj --no-restore --no-build --configuration ${{ env.BuildConfiguration }} --output PublishApp
     
     - name: Publish Artifact - WebApp
       uses: actions/upload-artifact@v3
@@ -89,7 +88,7 @@ jobs:
     - name: Publish Artifact - CodedUITest
       uses: actions/upload-artifact@v3
       with:
-        path: 'ContosoUniversity.CodedUITest/bin/${{ env.BuildConfiguration }}/netcoreapp3.1/**/*'
+        path: 'src/ContosoUniversity.CodedUITest/bin/${{ env.BuildConfiguration }}/net6.0/**/*'
         name: CodedUITest
   
   deploy_dev:
