@@ -11,26 +11,11 @@
     "webApiName": {
       "value": "api-contosouniversity-leandro"
     },
-    "functionName": {
-      "value": "func-contosouniversity-leandro"
-    },
-    "storageAccountName": {
-      "value": "strcontosouniversitylea"
-    },
     "appInsightsName": {
       "value": "appi-contosouniversity-leandro"
     },
     "skuName": {
       "value": "S1"
-    },
-    "environments": {
-      "value": [
-        "Dev",
-        "QA"
-      ]
-    },
-    "appConfigurationName": {
-      "value": "config-contosouniversity-leandro"
     },
     "sqlServerName": {
       "value": "sql-contosouniversityleandro"
