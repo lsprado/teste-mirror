@@ -22,9 +22,6 @@ jobs:
         if [ $(az group exists --name ${{ env.AZ_RG_NAME }}) = true ]; then
           echo "Deleting Resource group"
           az group delete --name ${{ env.AZ_RG_NAME }} --yes
-          
-          echo "Purge App Configuration"
-          az appconfig purge --name config-contosouniversity-leandro --yes
         else
             echo "Resource group not exists"
         fi
