@@ -38,7 +38,7 @@
     "environments": {
       "defaultValue": [
         "dev",
-        "qa"
+        "hml"
       ],
       "type": "array",
       "metadata": {
