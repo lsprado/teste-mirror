@@ -6,19 +6,19 @@
       "value": "plan-ContosoUniversity"
     },
     "webSiteName": {
-      "value": "ase-ContosoUniversityAPP"
+      "value": "ase-contosouniversityapp"
     },
     "webApiName": {
-      "value": "ase-ContosoUniversityAPI"
+      "value": "ase-contosouniversityapi"
     },
     "functionName": {
-      "value": "func-ContosoUniversity"
+      "value": "func-contosouniversity"
     },
     "storageAccountName": {
-      "value": "stvmcontosouniversity"
+      "value": "strcontosouniversity"
     },
     "appInsightsName": {
-      "value": "appi-ContosoUniversity"
+      "value": "appi-contosouniversity"
     },
     "skuName": {
       "value": "S1"
@@ -30,10 +30,10 @@
       ]
     },
     "appConfigurationName": {
-      "value": "config-ContosoUniversity"
+      "value": "config-contosouniversity"
     },
     "sqlServerName": {
-      "value": "contosouniversityexampleserver"
+      "value": "contosouniversityserver"
     },
     "sqlServerAdminLogin": {
       "value": "leandro"
@@ -42,8 +42,7 @@
       "value": "#P@ssw0rd2022#"
     },
     "sqlDatabaseName": {
-      "value": "contosouniversity"
-
+      "value": "contosouniversity-db"
     }
   }
 }
