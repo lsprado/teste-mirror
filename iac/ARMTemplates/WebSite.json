@@ -174,7 +174,7 @@
       "location": "[resourceGroup().location]",
       "comments": "This specifies the web app slots.",
       "properties": {
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
       },
       "dependsOn": [
         "[resourceId('Microsoft.Web/Sites', parameters('webSiteName'))]"
