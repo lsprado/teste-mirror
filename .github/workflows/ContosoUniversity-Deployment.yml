@@ -3,25 +3,23 @@ name: ContosoUniversity-Deployment
 on:
   push:
     branches:
-      - master
+      - main
     paths-ignore:
       - '**.yml'
 
 env:
   BuildConfiguration: Release
   BuildPlatform: any cpu
-  WebAppName: ase-ContosoUniversityAPP
-  WebApiName: ase-ContosoUniversityAPI
-  AZ_RG_NAME: RG_ContosoUniversity
+  WebAppName: app-contosouniversity
+  WebApiName: api-contosouniversity
+  AZ_RG_NAME: rg-contosouniversity
   AZ_RG_LOCATION: eastus
 
 jobs:
-  
   run_infra:
     name: create infra
     runs-on: ubuntu-latest
     steps:
-    
     - uses: actions/checkout@v3
     
     - name: Azure Login
