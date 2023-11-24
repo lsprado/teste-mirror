@@ -123,12 +123,12 @@ jobs:
         package: api-package
         slot-name: dev
     
-    - name: Configure App Settings WebApi
-      uses: azure/appservice-settings@v1
-      with:
-        app-name: ${{ env.WebApiName }}
-        slot-name: dev
-        app-settings-json: '${{ vars.APP_SETTINGS_API }}'
+    #- name: Configure App Settings WebApi
+    #  uses: azure/appservice-settings@v1
+    #  with:
+    #    app-name: ${{ env.WebApiName }}
+    #    slot-name: dev
+    #    app-settings-json: '${{ vars.APP_SETTINGS_API }}'
 
     - name: Deploy WebApp
       uses: Azure/webapps-deploy@v2
@@ -137,12 +137,12 @@ jobs:
         package: app-package
         slot-name: dev
     
-    - name: Configure App Settings WebApp
-      uses: azure/appservice-settings@v1
-      with:
-        app-name: ${{ env.WebAppName }}
-        slot-name: dev
-        app-settings-json: '${{ vars.APP_SETTINGS_APP }}'
+    #- name: Configure App Settings WebApp
+    #  uses: azure/appservice-settings@v1
+    #  with:
+    #    app-name: ${{ env.WebAppName }}
+    #    slot-name: dev
+    #    app-settings-json: '${{ vars.APP_SETTINGS_APP }}'
   
   deploy_hml:
     name: deploy to hml
