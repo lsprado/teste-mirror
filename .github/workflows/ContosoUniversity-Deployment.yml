@@ -10,8 +10,8 @@ on:
 env:
   BuildConfiguration: Release
   BuildPlatform: any cpu
-  WebAppName: app-contosouniversity
-  WebApiName: api-contosouniversity
+  WebAppName: app-contosouniversity-leandro
+  WebApiName: api-contosouniversity-leandro
   AZ_RG_NAME: rg-contosouniversity
   AZ_RG_LOCATION: eastus
 
