@@ -47,59 +47,10 @@
         "description": "Describes WebSite Name"
       }
     },
-    "functionName": {
-      "type": "string",
-      "metadata": {
-        "description": "Describes WebSite Name"
-      }
-    },
     "appInsightsName": {
       "type": "string",
       "metadata": {
         "description": "Application Insights Name"
-      }
-    },
-    "environments": {
-      "defaultValue": [
-        "Dev"
-      ],
-      "type": "array",
-      "metadata": {
-        "description": "Array with the names for the environment slots"
-      },
-      "maxLength": 19
-    },
-    "storageAccountName": {
-      "type": "String"
-    },
-    "appConfigurationName": {
-      "type": "String"
-    },
-    "configKeyValueNames": {
-      "type": "array",
-      "defaultValue": [
-        "myKey",
-        "myKey$myLabel"
-      ],
-      "metadata": {
-        "description": "Specifies the names of the key-value resources. The name is a combination of key and label with $ as delimiter. The label is optional."
-      }
-    },
-    "configKeyValueValues": {
-      "type": "array",
-      "defaultValue": [
-        "Key-value without label",
-        "Key-value with label"
-      ],
-      "metadata": {
-        "description": "Specifies the values of the key-value resources. It's optional"
-      }
-    },
-    "contentType": {
-      "type": "string",
-      "defaultValue": "the-content-type",
-      "metadata": {
-        "description": "Specifies the content type of the key-value resources. For feature flag, the value should be application/vnd.microsoft.appconfig.ff+json;charset=utf-8. For Key Value reference, the value should be application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8. Otherwise, it's optional."
       }
     },
     "sqlServerName": {
@@ -130,7 +81,6 @@
     }
   },
   "variables": {
-    "storageAccountid": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
     "webSiteNameDev": "[concat(parameters('webSiteName'), '-dev')]",
     "webSiteNameHml": "[concat(parameters('webSiteName'), '-hml')]",
     "webApiNameDev": "[concat(parameters('webApiName'), '-dev')]",
@@ -508,52 +458,6 @@
       }
     },
     {
-      "type": "Microsoft.Web/sites",
-      "apiVersion": "2019-08-01",
-      "name": "[parameters('functionName')]",
-      "kind": "functionapp",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
-      ],
-      "properties": {
-        "name": "[parameters('functionName')]",
-        "siteConfig": {
-          "appSettings": [
-            {
-              "name": "FUNCTIONS_WORKER_RUNTIME",
-              "value": "dotnet"
-            },
-            {
-              "name": "FUNCTIONS_EXTENSION_VERSION",
-              "value": "~3"
-            },
-            {
-              "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
-              "value": "[reference(resourceId('microsoft.insights/components/', parameters('appInsightsName')), '2018-05-01-preview').InstrumentationKey]"
-            },
-            {
-              "name": "AzureWebJobsStorage",
-              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
-            }
-          ]
-        },
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]",
-        "clientAffinityEnabled": false
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[toLower(parameters('storageAccountName'))]",
-      "apiVersion": "2019-06-01",
-      "location": "[resourceGroup().location]",
-      "kind": "StorageV2",
-      "sku": {
-        "name": "Standard_LRS"
-      }
-    },
-    {
       "type": "Microsoft.Insights/components",
       "apiVersion": "2015-05-01",
       "location": "[resourceGroup().location]",
@@ -565,15 +469,6 @@
       },
       "tags": {
         "displayName": "AppInsights Component"
-      }
-    },
-    {
-      "type": "Microsoft.AppConfiguration/configurationStores",
-      "apiVersion": "2020-07-01-preview",
-      "name": "[parameters('appConfigurationName')]",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "standard"
       }
     },
     {
