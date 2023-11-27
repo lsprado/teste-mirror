@@ -40,6 +40,6 @@ jobs:
         with:
           context: src/ContosoUniversity.API
           push: true
-          tags: ${{ env.IMAGE_NAME_API }}:latest
+          tags: ${{ secrets.REGISTRY_URL }}/${{ env.IMAGE_NAME_API }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
