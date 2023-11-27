@@ -40,6 +40,6 @@ jobs:
         with:
           context: src/ContosoUniversity.API
           push: true
-          tags: ${{ secrets.REGISTRY_URL }}/${{ env.IMAGE_NAME_API }}:{{ github.GITHUB_RUN_ID }}
+          tags: ${{ secrets.REGISTRY_URL }}/${{ env.IMAGE_NAME_API }}:$GITHUB_RUN_ID
           cache-from: type=gha
           cache-to: type=gha,mode=max
