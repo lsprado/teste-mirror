@@ -36,10 +36,20 @@ jobs:
             echo "Resource group already exists"
         fi
         
-    - name: Azure ARM Deployment
-      uses: Azure/cli@v1
+    - name: Deploy Template
+      uses: Azure/arm-deploy@v1
       with:
-        inlineScript: az deployment group create --resource-group ${{ env.AZ_RG_NAME }} --template-file iac/ARMTemplates/WebSite.json --parameters iac/ARMTemplates/WebSite.parameters.json
+        resourceGroupName: ${{ env.AZ_RG_NAME }}
+        region: ${{ env.AZ_RG_LOCATION }}
+        template: iac/ARMTemplates/WebSite.json
+        deploymentMode: Incremental
+        deploymentName: 'gh-actions'
+        parameters: iac/ARMTemplates/WebSite.parameters.json
+          
+    #- name: Azure ARM Deployment
+    #  uses: Azure/cli@v1
+    #  with:
+    #    inlineScript: az deployment group create --resource-group ${{ env.AZ_RG_NAME }} --template-file iac/ARMTemplates/WebSite.json --parameters iac/ARMTemplates/WebSite.parameters.json
   
   run_build:
     name: run build
