@@ -48,6 +48,6 @@ jobs:
         with:
           context: src/ContosoUniversity.API
           push: true
-          tags: ${{ github.GITHUB_RUN_ID }}
+          tags: ${{ env.IMAGE_NAME }}:${{ github.GITHUB_RUN_ID }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
