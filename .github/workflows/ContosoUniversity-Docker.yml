@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   
 env:
-  IMAGE_NAME: ContosoUniversity.API
+  IMAGE_NAME_API: contosouniversity.api
 
 jobs:
   build:
@@ -29,16 +29,8 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ${{ secrets.REGISTRY_URL }}
-          username: ${{ secrets.REGISTRY_USERNAME  }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-
-      # Extract metadata (tags, labels) for Docker
-      # https://github.com/docker/metadata-action
-      - name: Extract Docker metadata
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ secrets.REGISTRY_URL }}/${{ env.IMAGE_NAME }}
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
@@ -48,6 +40,6 @@ jobs:
         with:
           context: src/ContosoUniversity.API
           push: true
-          tags: ${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.IMAGE_NAME_API }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
