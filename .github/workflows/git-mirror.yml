@@ -7,8 +7,14 @@ jobs:
   git-mirror:
     runs-on: ubuntu-latest
     steps:
-      - name: Run a git mirror
-        run: |
-          git clone --bare https://user:${{ secrets.GH_FROM }}@github.com/contoso-projects/contoso-university.git
-          cd contoso-university
-          git -c http.sslVerify=false push --mirror https://user:${{ secrets.GH_TO }}@github.com/lsprado/teste-mirror.git
+      - uses: actions/checkout@v4
+      
+      - run: | 
+          pwd
+          ls -R
+      
+      #- name: Run a git mirror
+      #  run: |
+      #    git clone --bare https://user:${{ secrets.GH_FROM }}@github.com/contoso-projects/contoso-university.git
+      #    cd contoso-university
+      #    git -c http.sslVerify=false push --mirror https://user:${{ secrets.GH_TO }}@github.com/lsprado/teste-mirror.git
