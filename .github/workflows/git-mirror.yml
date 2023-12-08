@@ -14,6 +14,12 @@ jobs:
           ls -R
       
       - run: git remote -v
+
+      - run: git remote set-url origin https://github.com/lsprado/teste-mirror.git
+
+      - run: git remote -v
+
+      - run: git push
       
       #- name: Run a git mirror
       #  run: |
