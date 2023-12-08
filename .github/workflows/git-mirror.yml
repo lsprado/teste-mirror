@@ -15,7 +15,7 @@ jobs:
       
       - run: git remote -v
 
-      - run: git remote set-url origin https://user:${{ secrets.GH_TO }}@github.com/lsprado/teste-mirror.git
+      - run: git remote set-url origin https://user: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@github.com/lsprado/teste-mirror.git
 
       - run: git remote -v
 
