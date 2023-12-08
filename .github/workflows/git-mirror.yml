@@ -15,11 +15,11 @@ jobs:
       
       - run: git remote -v
 
-      - run: git remote set-url origin https://github.com/lsprado/teste-mirror.git
+      - run: git remote set-url origin https://user:${{ secrets.GH_TO }}@github.com/lsprado/teste-mirror.git
 
       - run: git remote -v
 
-      - run: git push https://user:${{ secrets.GH_TO }}@github.com/lsprado/teste-mirror.git
+      - run: git push
       
       #- name: Run a git mirror
       #  run: |
