@@ -13,6 +13,8 @@ jobs:
           pwd
           ls -R
       
+      - run: git remote -v
+      
       #- name: Run a git mirror
       #  run: |
       #    git clone --bare https://user:${{ secrets.GH_FROM }}@github.com/contoso-projects/contoso-university.git
